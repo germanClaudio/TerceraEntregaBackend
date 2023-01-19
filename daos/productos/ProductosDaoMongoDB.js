@@ -13,7 +13,7 @@ class ProductosDaoMongoDB extends ContenedorMongoDB {
     async getAllProducts(){
         try {
             const products = await Productos.find()
-            logger.info('Productos encontrados: ',products)
+            logger.info('Productos encontrados...',products)
             return products
         } catch (error) {
             logger.error("Error MongoDB getProducts: ",error)
@@ -32,9 +32,18 @@ class ProductosDaoMongoDB extends ContenedorMongoDB {
     
     async createProduct(product){
         try {
+            // // aagregar validaciones ----------------------
+            // const itemMongoDB = await Productos.findOne({name: product.name})
+        
+            // if (itemMongoDB) {
+            //     logger.error("Producto con Nombre existente: ",error)
+            //     return new Error('Ya se encuentra creado el item.')
+            // }
+
             const newProduct = new Productos(product)
             await newProduct.save()
-            logger.info('Product created: ', newProduct)
+            logger.info('Product created', newProduct)
+            return newProduct
         } catch (error) {
             logger.error("Error MongoDB createProduct: ",error)
         }

@@ -2,12 +2,14 @@ const { Schema, model } = require('mongoose')
 
 const ProductoSchema = new Schema({
     timestamp:{
-        type: String
+        type: String,
+        // default: Date.now
     },
     name: {
         type: String,
-        required: [true, 'El nombre es obligatorio'],
-        maxlength: 100
+        // required: true,
+        maxlength: 100,
+        unique: true
     },
     description: {
         type: String,
@@ -15,13 +17,13 @@ const ProductoSchema = new Schema({
     },
     price: {
         type: Number,
-        required: true,
+        // required: true,
         default: 0,
         maxlength: 100
     },
     picture: { 
         type: String,
-        required: true,
+        // required: true,
         maxlength: 500,
         unique: true,
     },
@@ -35,6 +37,9 @@ const ProductoSchema = new Schema({
         type: Number,
         maxlength: 100
     }
+    
+},{
+    versionKey: false
 });
 
 module.exports = model('Productos', ProductoSchema)

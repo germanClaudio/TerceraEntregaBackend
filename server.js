@@ -32,7 +32,6 @@ const { initPassport } = require('./middlewares/passport.js')
 // const args = parseArgs(process.argv.slice(2))
 //     console.log('args: ', args)
 
-
 const initServer = () => {    
 
     const app = express()
