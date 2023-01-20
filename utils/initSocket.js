@@ -21,8 +21,8 @@ const initSocket = (io) => {
 
         socket.on('newProducto', async (producto) => {
             logger.info('Data servidor: ' + JSON.stringify(producto))
-            const arrayProducts = await containerProduct.createProduct(producto)
-            io.sockets.emit('productsAll', arrayProducts)
+            //const arrayProducts = await containerProduct.createProduct(producto)
+            io.sockets.emit('productsAll', containerProduct.getAllProducts())
         })
 
 
